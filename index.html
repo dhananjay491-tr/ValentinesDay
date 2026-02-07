@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A Special Surprise</title>
     <style>
+        /* Feature 1: Bright Vibrant Lavender */
         body {
-            background-color: #E6E6FA; 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #DDA0DD; 
+            font-family: 'Arial Rounded MT Bold', 'Helvetica', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -19,25 +20,25 @@
 
         .container {
             padding: 20px;
-            transition: all 0.5s ease;
             z-index: 10;
         }
 
         h1 {
-            color: #5d5d81;
+            color: #4b0082; /* Deep Indigo text */
             font-size: 2.5rem;
-            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(255,255,255,0.4);
         }
 
+        /* Feature 3: Pop up message */
         .popup-box {
             background: white;
             padding: 15px 25px;
             border-radius: 50px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
             display: inline-block;
             margin-bottom: 30px;
             font-weight: bold;
-            color: #ff6b6b;
+            color: #ff4757;
             animation: bounce 2s infinite;
         }
 
@@ -47,21 +48,25 @@
             justify-content: center;
         }
 
+        /* Feature 4: Buttons in the same best-suited color */
         button {
             padding: 15px 30px;
-            font-size: 1rem;
+            font-size: 1.1rem;
             border: none;
             border-radius: 25px;
             cursor: pointer;
-            transition: transform 0.2s, background-color 0.2s;
+            transition: all 0.3s ease;
             font-weight: bold;
+            background-color: #8e44ad; /* Rich Violet */
+            color: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
-        .btn-yes { background-color: #9b59b6; color: white; }
-        .btn-no { background-color: #95a5a6; color: white; }
-        button:hover { transform: scale(1.1); }
+        button:hover {
+            transform: translateY(-5px) scale(1.05);
+            background-color: #7d3c98; /* Slightly darker on hover */
+        }
 
-        /* Surprise Page Styles */
         #surprise-page { display: none; }
 
         .penguin-container {
@@ -71,38 +76,41 @@
         }
 
         .rose-hand {
-            font-size: 40px;
+            font-size: 45px;
             position: absolute;
-            bottom: 10px;
-            right: 20px;
+            bottom: 5px;
+            right: 15px;
         }
 
         .hug-btn {
             background-color: #ff4757;
             color: white;
-            margin-top: 20px;
-            padding: 20px 40px;
+            margin-top: 25px;
+            padding: 18px 45px;
+            animation: pulse 1.5s infinite;
         }
 
-        /* --- Falling Petals Animation --- */
+        /* Falling Petals Animation */
         .petal {
             position: fixed;
             top: -10%;
             z-index: 1;
-            user-select: none;
-            cursor: default;
             animation: fall linear forwards;
         }
 
         @keyframes fall {
-            to {
-                transform: translateY(110vh) translateX(100px) rotate(360deg);
-            }
+            to { transform: translateY(110vh) translateX(80px) rotate(360deg); }
         }
 
         @keyframes bounce {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
     </style>
 </head>
@@ -112,8 +120,8 @@
         <h1>kita baa!! ki khobor shobor? 🫣🫣</h1>
         <div class="popup-box">parde ke piche kya hai?</div>
         <div class="btn-group">
-            <button class="btn-yes" onclick="showSurprise()">cholo dekho</button>
-            <button class="btn-no" onclick="exitSite()">na mood nai pore dekhi</button>
+            <button onclick="showSurprise()">cholo dekho</button>
+            <button onclick="exitSite()">na mood nai pore dekhi</button>
         </div>
     </div>
 
@@ -123,57 +131,42 @@
         </div>
         <h1>Happy Rose Day Kocho🌹🌹<br>I love you so much</h1>
         <button class="hug-btn" onclick="playMusic()">hug me 🤗</button>
-        
-        <audio id="bg-music">
-            <source src="Tor_Ek_Kothay(256k).mp3" type="audio/mpeg">
-        </audio>
+        <audio id="bg-music"><source src="Tor_Ek_Kothay(256k).mp3" type="audio/mpeg"></audio>
     </div>
 
     <script>
         function showSurprise() {
             document.getElementById('main-page').style.display = 'none';
             document.getElementById('surprise-page').style.display = 'block';
-            startPetals(); // Trigger the petals
+            startPetals();
         }
 
         function exitSite() {
-            alert("Okay, take your time! Bye bye! 👋");
+            alert("The penguin is sad now... but okay! 👋");
             window.location.href = "https://www.google.com";
         }
 
         function playMusic() {
             var audio = document.getElementById('bg-music');
-            audio.play().catch(e => alert("Please ensure 'your-song.mp3' is in the folder!"));
+            audio.play().catch(e => console.log("Audio file missing or blocked."));
             alert("Sending you the biggest hug ever! ❤️");
         }
 
-        // --- Petal Logic ---
         function startPetals() {
-            const petalCount = 30;
-            const container = document.body;
-            const roses = ['🌹', '🌸', '❤️'];
-
-            for (let i = 0; i < petalCount; i++) {
+            const roses = ['🌹', '🌸', '💖', '✨'];
+            for (let i = 0; i < 40; i++) {
                 setTimeout(() => {
                     const petal = document.createElement('div');
                     petal.className = 'petal';
                     petal.innerText = roses[Math.floor(Math.random() * roses.length)];
-                    
-                    // Randomize position and speed
                     petal.style.left = Math.random() * 100 + 'vw';
-                    petal.style.fontSize = (Math.random() * 20 + 10) + 'px';
-                    petal.style.animationDuration = (Math.random() * 3 + 2) + 's';
-                    petal.style.opacity = Math.random();
-
-                    container.appendChild(petal);
-
-                    // Remove petal after it falls to save memory
-                    setTimeout(() => { petal.remove(); }, 5000);
-                }, i * 300); // Staggered start
+                    petal.style.fontSize = (Math.random() * 25 + 15) + 'px';
+                    petal.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                    document.body.appendChild(petal);
+                    setTimeout(() => { petal.remove(); }, 6000);
+                }, i * 250);
             }
-            
-            // Loop the petals every few seconds
-            setTimeout(startPetals, 9000);
+            setTimeout(startPetals, 10000);
         }
     </script>
 </body>
