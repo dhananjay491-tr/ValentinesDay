@@ -66,24 +66,27 @@
 
         #surprise-page { display: none; }
 
-        /* Character Box Styling */
+        /* Updated Character Box for Tweety & Penguin */
         .character-box {
             display: flex;
             justify-content: center;
             align-items: flex-end;
-            gap: 20px;
+            gap: 25px;
             margin-bottom: 20px;
+        }
+
+        /* Tweety using High-Res Emoji approach */
+        .tweety-emoji {
+            font-size: 90px;
+            animation: tweetyBounce 1.5s ease-in-out infinite;
+            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.1));
+            line-height: 1;
         }
 
         .penguin-container {
             font-size: 100px;
             position: relative;
-        }
-
-        .tweety-img {
-            width: 110px;
-            height: auto;
-            animation: tweetyBounce 1.5s ease-in-out infinite;
+            line-height: 1;
         }
 
         .rose-hand {
@@ -101,10 +104,9 @@
             animation: pulse 1.5s infinite;
         }
 
-        /* Animations */
         @keyframes tweetyBounce {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+            50% { transform: translateY(-25px); }
         }
 
         @keyframes fall {
@@ -143,7 +145,8 @@
 
     <div id="surprise-page" class="container">
         <div class="character-box">
-            <img src="https://pngimg.com/d/tweety_bird_PNG33.png" alt="Tweety" class="tweety-img">
+            <div class="tweety-emoji">🐤</div>
+            
             <div class="penguin-container">
                 🐧<span class="rose-hand">🌹</span>
             </div>
@@ -161,13 +164,13 @@
         }
 
         function exitSite() {
-            alert("Pingu will miss you! 👋");
+            alert("Pingu will miss you! 😔😔");
             window.location.href = "https://www.google.com";
         }
 
         function playMusic() {
             var audio = document.getElementById('bg-music');
-            audio.play().catch(e => console.log("Audio file needs to be in folder."));
+            audio.play().catch(e => console.log("Music file check."));
             alert("Sending you the biggest hug ever! ❤️");
         }
 
