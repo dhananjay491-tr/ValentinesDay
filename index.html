@@ -11,23 +11,22 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
+            height: 100vh;
             margin: 0;
-            overflow-x: hidden;
+            overflow: hidden;
             text-align: center;
         }
 
         .container {
             padding: 20px;
             z-index: 10;
-            max-width: 90%;
         }
 
         h1 {
             color: #4b0082;
-            font-size: 2rem;
+            font-size: 2.2rem;
             text-shadow: 2px 2px 4px rgba(255,255,255,0.4);
-            margin-top: 10px;
+            margin-top: 20px;
         }
 
         .popup-box {
@@ -36,7 +35,7 @@
             border-radius: 50px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.15);
             display: inline-block;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             font-weight: bold;
             color: #ff4757;
             animation: bounce 2s infinite;
@@ -44,14 +43,13 @@
 
         .btn-group {
             display: flex;
-            gap: 15px;
+            gap: 20px;
             justify-content: center;
-            flex-wrap: wrap;
         }
 
         button {
-            padding: 12px 25px;
-            font-size: 1rem;
+            padding: 15px 30px;
+            font-size: 1.1rem;
             border: none;
             border-radius: 25px;
             cursor: pointer;
@@ -67,47 +65,7 @@
             background-color: #7d3c98;
         }
 
-        /* --- Poem Styles --- */
-        .poem-container {
-            background: rgba(255, 255, 255, 0.7);
-            padding: 15px;
-            border-radius: 20px;
-            margin: 15px 0;
-            font-style: italic;
-            color: #4b0082;
-            line-height: 1.5;
-            border: 2px dashed #ff4757;
-            font-size: 0.95rem;
-        }
-
-        /* --- Meesho Voucher Styles --- */
-        .meesho-voucher {
-            background: linear-gradient(135deg, #ff4757 0%, #ff6b81 100%);
-            color: white;
-            padding: 20px;
-            border-radius: 20px;
-            margin: 20px auto;
-            max-width: 260px;
-            cursor: pointer;
-            box-shadow: 0 10px 25px rgba(255, 71, 87, 0.4);
-            border: 3px dashed rgba(255, 255, 255, 0.5);
-            animation: shimmy 2s infinite;
-        }
-
-        @keyframes shimmy {
-            0%, 100% { transform: rotate(0deg); }
-            25% { transform: rotate(3deg); }
-            75% { transform: rotate(-3deg); }
-        }
-
-        .voucher-amount {
-            display: none;
-            font-size: 1.8rem;
-            font-weight: 900;
-            text-shadow: 2px 2px 0px #c0392b;
-        }
-
-        /* --- Loading Screen --- */
+        /* --- Loading Screen Styles --- */
         #loader {
             display: none;
             position: fixed;
@@ -119,7 +77,11 @@
             flex-direction: column;
         }
 
-        .heart-loader { font-size: 80px; animation: heartPulse 1s infinite; }
+        .heart-loader {
+            font-size: 80px;
+            animation: heartPulse 1s infinite;
+        }
+
         #surprise-page { display: none; }
 
         .character-box {
@@ -127,25 +89,65 @@
             justify-content: center;
             align-items: flex-end;
             gap: 15px;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
         }
 
-        .tweety-img { width: 100px; height: auto; animation: characterBounce 1.5s infinite; }
-        .penguin-container { font-size: 90px; position: relative; animation: characterBounce 1.5s infinite 0.2s; }
-        .rose-hand { font-size: 40px; position: absolute; bottom: 5px; right: 5px; }
+        .tweety-img {
+            width: 120px;
+            height: auto;
+            animation: characterBounce 1.5s ease-in-out infinite;
+        }
 
-        .hug-btn { background-color: #ff4757; animation: pulse 1.5s infinite; }
+        .penguin-container {
+            font-size: 110px;
+            position: relative;
+            line-height: 1;
+            animation: characterBounce 1.5s ease-in-out infinite;
+            animation-delay: 0.2s;
+        }
+
+        .rose-hand {
+            font-size: 45px;
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+        }
+
+        .hug-btn {
+            background-color: #ff4757;
+            color: white;
+            margin-top: 20px;
+            padding: 18px 45px;
+            animation: pulse 1.5s infinite;
+        }
 
         /* --- Animations --- */
-        @keyframes heartPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.3); } }
-        @keyframes characterBounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
-        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+        @keyframes heartPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes characterBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
 
         .petal {
             position: fixed;
             top: -10%;
-            z-index: 5;
+            z-index: 1;
             animation: fall linear forwards;
         }
 
@@ -174,30 +176,10 @@
         <div class="character-box">
             <img src="tweety.png" alt="Tweety" class="tweety-img">
             <div class="penguin-container">
-                🐧<span class="rose-hand">💝</span>
+                🐧<span class="rose-hand">🌹</span>
             </div>
         </div>
-
-        <div class="poem-container">
-            <p style="margin: 5px 0;">Kothay shuru, kothay shesh—jaanina ami,</p>
-            <p style="margin: 5px 0;">But with you, <b>Tweetu</b>, every moment is dami.</p>
-            <p style="margin: 5px 0;">Pingu may be clumsy, Pingu may be shy,</p>
-            <p style="margin: 5px 0;">But for his Tweetu, he’d reach for the sky. 🐧💖</p>
-        </div>
-
-        <h1>Happy Valentine's Day, Tweetu! 🌹</h1>
-        
-        <div class="meesho-voucher" onclick="revealGift(this)">
-            <div id="gift-instruction">🎁 A Surprise for You! <br><small>(Tap to Unbox)</small></div>
-            <div id="gift-value" class="voucher-amount">
-                ₹800.00
-                <div style="font-size: 0.9rem; font-weight: normal; margin-top: 10px;">
-                    Meesho Shopping Spree! 🛍️✨
-                </div>
-                <p style="font-size: 0.7rem; opacity: 0.9;">*Screenshot & send to Pingu*</p>
-            </div>
-        </div>
-
+        <h1>Happy Belated Rose Day Tweetu🌹🌹<br>I love you so much😘😘</h1>
         <button class="hug-btn" onclick="playMusic()">hug me 🤗</button>
         <audio id="bg-music"><source src="Tor_Ek_Kothay(256k).mp3" type="audio/mpeg"></audio>
     </div>
@@ -206,13 +188,15 @@
         function startLoading() {
             document.getElementById('main-page').style.display = 'none';
             document.getElementById('loader').style.display = 'flex';
+            
+            // Wait 1.5 seconds before showing surprise
             setTimeout(showSurprise, 1500);
         }
 
         function showSurprise() {
             document.getElementById('loader').style.display = 'none';
             document.getElementById('surprise-page').style.display = 'block';
-            startPetals(['🌹', '🌸', '💖', '✨']);
+            startPetals();
         }
 
         function exitSite() {
@@ -222,20 +206,26 @@
 
         function playMusic() {
             var audio = document.getElementById('bg-music');
-            audio.play().catch(e => console.log("Audio play blocked."));
+            audio.play().catch(e => alert("Please make sure your-song.mp3 is uploaded!"));
             alert("Sending you the biggest hug ever! ❤️");
         }
 
-        function revealGift(element) {
-            element.style.animation = 'none';
-            document.getElementById('gift-instruction').style.display = 'none';
-            document.getElementById('gift-value').style.display = 'block';
-            element.style.background = 'linear-gradient(135deg, #2ecc71 0%, #27ae60 100%)';
-            element.style.boxShadow = '0 10px 25px rgba(46, 204, 113, 0.4)';
-            
-            // Trigger Money & Heart rain
-            startPetals(['💸', '💰', '💖', '🛍️']);
-            alert("Surprise! Happy Valentine's Day! Go pick something you love on Meesho! 💖");
+        function startPetals() {
+            const items = ['🌹', '🌸', '💖', '✨'];
+            for (let i = 0; i < 40; i++) {
+                setTimeout(() => {
+                    const petal = document.createElement('div');
+                    petal.className = 'petal';
+                    petal.innerText = items[Math.floor(Math.random() * items.length)];
+                    petal.style.left = Math.random() * 100 + 'vw';
+                    petal.style.fontSize = (Math.random() * 25 + 15) + 'px';
+                    petal.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                    document.body.appendChild(petal);
+                    setTimeout(() => { petal.remove(); }, 6000);
+                }, i * 250);
+            }
+            setTimeout(startPetals, 10000);
         }
-
-        function startPetals
+    </script>
+</body>
+</html>
